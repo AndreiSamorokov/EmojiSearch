@@ -5,11 +5,11 @@ import "./SelectFile.css";
 
 export default class SelectFile extends PureComponent {
   static propTypes = {
-    textChange: PropTypes.func
+    etypeChange: PropTypes.func
   };
 
   handleChange = event => {
-    this.props.textChange(event);
+    this.props.etypeChange(event); 
   };
 
   render() {

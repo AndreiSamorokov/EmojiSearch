@@ -19,11 +19,15 @@ export default class App extends PureComponent {
     });
   };
 
+  handleSelectChange = event => {
+    console.log(event.target.value);
+  }
+
   render() {
     return (
       <div>
         <Header />
-        <SelectFile fileChange={this.handleSelectChange} />
+        <SelectFile etypeChange={this.handleSelectChange} />
         <SearchInput textChange={this.handleSearchChange} />
         <EmojiResults emojiData={this.state.filteredEmoji} />
       </div>
