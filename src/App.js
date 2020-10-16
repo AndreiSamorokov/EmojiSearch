@@ -17,26 +17,20 @@ export default class App extends PureComponent {
 
   handleSearchChange = event => {
     this.setState({
-      stext: event.target.value,
-      // filteredEmoji: filterEmoji(event.target.value, 20)
-    });
-    this.handelFilter();
+      stext: event.target.value, 
+      filteredEmoji: filterEmoji(this.state.etype, event.target.value, 20)
+    }); 
   };
 
   handleSelectChange = event => {
     this.setState({
-      etype: event.target.value
+      etype: event.target.value,
+      filteredEmoji: filterEmoji(event.target.value, this.state.stext, 20)
     });
-    this.handelFilter();
+ 
   }
 
-  handelFilter = () => {
-    this.setState({ 
-      filteredEmoji: filterEmoji(this.state.etype, this.state.stext, 20)
-    });
-    console.log( this.state.etype  + this.state.stext );
-  }
-
+ 
 
   render() {
     return (
