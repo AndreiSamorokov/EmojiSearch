@@ -9,19 +9,34 @@ export default class App extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      filteredEmoji: filterEmoji("", 20)
+      filteredEmoji: filterEmoji(1, "", 20), 
+      etype: 1,
+      stext: ''
     };
   }
 
   handleSearchChange = event => {
     this.setState({
-      filteredEmoji: filterEmoji(event.target.value, 20)
+      stext: event.target.value,
+      // filteredEmoji: filterEmoji(event.target.value, 20)
     });
+    this.handelFilter();
   };
 
   handleSelectChange = event => {
-    console.log(event.target.value);
+    this.setState({
+      etype: event.target.value
+    });
+    this.handelFilter();
   }
+
+  handelFilter = () => {
+    this.setState({ 
+      filteredEmoji: filterEmoji(this.state.etype, this.state.stext, 20)
+    });
+    console.log( this.state.etype  + this.state.stext );
+  }
+
 
   render() {
     return (
